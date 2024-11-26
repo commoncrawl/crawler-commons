@@ -39,7 +39,7 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.apache.commons.io.input.BoundedInputStream;
+// import org.apache.commons.io.input.BoundedInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -166,8 +166,9 @@ public class EffectiveTldFinder {
         boolean inPrivateDomainSection = false;
         try {
             int linesRead = 0, rulesRead = 0;
-            BoundedInputStream isCounting = BoundedInputStream.builder().setInputStream(effectiveTldDataStream).get();
-            InputStream is = isCounting;
+            // BoundedInputStream isCounting = BoundedInputStream.builder().setInputStream(effectiveTldDataStream).get();
+            // InputStream is = isCounting;
+            InputStream is = effectiveTldDataStream;
             List<MessageDigest> digests = new ArrayList<>();
             try {
                 MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -208,8 +209,9 @@ public class EffectiveTldFinder {
             configured = true;
 
             is.close();
-            long bytesRead = isCounting.getCount();
-            LOGGER.info("Successfully read public suffix list: {} bytes, {} lines, {} rules", bytesRead, linesRead, rulesRead);
+            // long bytesRead = isCounting.getCount();
+            // LOGGER.info("Successfully read public suffix list: {} bytes, {} lines, {} rules", bytesRead, linesRead, rulesRead);
+            LOGGER.info("Successfully read public suffix list: {} lines, {} rules", linesRead, rulesRead);
             for (MessageDigest digest : digests) {
                 byte[] d = digest.digest();
                 BigInteger bi = new BigInteger(1, d);
