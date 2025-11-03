@@ -1,7 +1,10 @@
 name: Code Coverage
 
-on: workflow_dispatch
-  
+on:
+  workflow_dispatch:
+  pull_request:
+  fork:
+
 jobs:
   build:
     name: Coveralls
