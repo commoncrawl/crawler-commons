@@ -3,6 +3,7 @@ name: Code Coverage
 on:
   workflow_dispatch:
   pull_request:
+    branches: [main, develop, commons-io-downgrade, patch-1]
   fork:
 
 jobs:
